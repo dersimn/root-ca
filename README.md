@@ -4,8 +4,7 @@ This repository is based on a nice tutorial from [jamielinux.com][1]. Root CA is
 
 ## Prepare the directory
 
-      mkdir certs crl newcerts private
-      chmod 700 private
+      mkdir .newcerts
       touch index.txt
       echo 1000 > serial
 
