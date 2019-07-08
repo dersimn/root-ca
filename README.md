@@ -2,7 +2,7 @@
 
 This repository is based on a nice tutorial from [jamielinux.com][1]. Root CA is used directly, avoiding to use an Intermediate CA. For most smaller projects this is not necessary anyways.
 
-## Prepare the directory
+Prepare the directory:
 
       mkdir newcerts
       touch index.txt
