@@ -34,6 +34,9 @@ default_days      = 375
 preserve          = no
 policy            = policy_loose
 
+# Honor extensions requested of us e.g. subjectAltName
+copy_extensions = copy
+
 [ policy_loose ]
 # Allow the intermediate CA to sign a more diverse range of certificates.
 # See the POLICY FORMAT section of the `ca` man page.
