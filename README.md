@@ -59,7 +59,9 @@ Create Certificate Signing Request (CSR)
 
       openssl req -config openssl.cnf -key example.com.key -new -sha256 -out example.com.csr
 
-      openssl req -config openssl.cnf -key example.com.key -new -sha256 -out example.com.csr -reqexts SAN -config <(cat openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:www.example.com,DNS:example.org,DNS:www.example.org"))
+CSR for multiple domains. You have to provide the common name also here in this list:
+
+      openssl req -config openssl.cnf -key example.com.key -new -sha256 -out example.com.csr -reqexts SAN -config <(cat openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:example.com,DNS:www.example.com,DNS:example.org,DNS:www.example.org"))
 
 When prompted, privide information like:
 
@@ -84,6 +86,19 @@ Verify
 
       openssl x509 -noout -text -in example.com.crt
 
+### Renew a certificate
+
+Revoke the old one
+
+      openssl ca -config openssl.cnf -revoke home.simon-christmann.de.crt
+
+then create a new CSR and sign it.
+
+### nginx
+
+Chain for nginx:
+
+    cat example.com.crt root_ca.crt > example.com.chain.crt
 
 ## Client certificate
 
