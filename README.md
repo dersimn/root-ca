@@ -59,7 +59,7 @@ Create Certificate Signing Request (CSR)
 
     openssl req -config openssl.cnf -key example.com.key -new -sha256 -out example.com.csr
 
-CSR for multiple domains. You have to provide the common name also here in this list:
+CSR for multiple domains or when using iOS ≥13 or macOS ≥10.15 (according to [this](https://support.apple.com/en-us/HT210176)). You have to provide the common name also here in this list:
 
     openssl req -config openssl.cnf -key example.com.key -new -sha256 -out example.com.csr -reqexts SAN -config <(cat openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:example.com,DNS:www.example.com,DNS:example.org,DNS:www.example.org"))
 
@@ -90,7 +90,7 @@ Verify
 
 Revoke the old one
 
-    openssl ca -config openssl.cnf -revoke home.simon-christmann.de.crt
+    openssl ca -config openssl.cnf -revoke example.com.crt
 
 then create a new CSR and sign it.
 
@@ -144,3 +144,4 @@ use
 [9]: https://de.wikipedia.org/wiki/X.509#Dateinamenserweiterungen_für_Zertifikate "Dateinamenserweiterungen für Zertifikate"
 [10]: https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/ "How to Create Your Own SSL Certificate Authority for Local HTTPS Development"
 [11]: https://shellhacks.com/create-csr-openssl-without-prompt-non-interactive/ "HowTo: Create CSR using OpenSSL Without Prompt (Non-Interactive)"
+[issue_1]: https://discussions.apple.com/thread/250723271?answerId=251404671022#251404671022 "Certificate Name does not match input"
