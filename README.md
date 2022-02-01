@@ -47,6 +47,10 @@ Verify the certificate:
 
 Copy this file (e.g. `5ed36f99.0`) to `/system/etc/security/cacerts/` on the Android device. You can use Cyanogenmod's file browser with root access for this. Set the permissions to `chmod 644` and reboot.
 
+#### Ubuntu
+
+Copy `.crt` to `/usr/local/share/ca-certificates`, then run `sudo update-ca-certificates`.
+
 
 ## Server certificate
 
